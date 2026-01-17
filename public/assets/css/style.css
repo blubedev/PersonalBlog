@@ -1,0 +1,25 @@
+/* @import url('https://unpkg.com/ress/dist/ress.min.css');*/
+
+header {
+    background-color: #f0f0f0;
+}
+
+ul {
+    display: flex;
+    justify-content: start;
+    gap: 15px;
+    list-style: none;
+    padding-left: 0px; /*デフォルトで40px取られていたので削除*/
+}
+
+a {
+    text-decoration: none;
+    color:#333;
+}
+
+footer {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
