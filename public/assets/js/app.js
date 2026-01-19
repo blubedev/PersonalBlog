@@ -1,5 +1,7 @@
 const button = document.getElementById("loadBtn");
+const wordsSearchBtn = document.getElementById("wordsSearchBtn");
 const list = document.getElementById("userList");
+const words = document.getElementById("words");
 
 button.addEventListener("click", async () => {
     try {
@@ -28,19 +30,18 @@ button.addEventListener("click", async () => {
     }
 });
 
-button.addEventListener("click", async () => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+wordsSearchBtn.addEventListener("click", async () => {
+    fetch("https://jsonplaceholder.typicode.com/todos/1") //responseがjsonのため、Listと違ってforeachメソッドを持っていない。
         .then((res) => res.json())
+        .then((json) => {
+            const wordRes = json;
+            words.innerHTML = ""; // 初期化
+            const li = document.createElement("li");
+            li.textContent = wordRes.title;
+            words.appendChild(li);
+        })
         .catch((e) => {
             alert("取得に失敗しました");
             console.error(e);
         });
-
-    list.innerHTML = ""; // 初期化
-
-    users.forEach(user => {
-        const li = document.createElement("li");
-        li.textContent = user.name;
-        list.appendChild(li);
-    });
 });
