@@ -1,7 +1,9 @@
 const button = document.getElementById("loadBtn");
 const wordsSearchBtn = document.getElementById("wordsSearchBtn");
+const governmentSearchBtn = document.getElementById("governmentSearchBtn");
 const list = document.getElementById("userList");
 const words = document.getElementById("words");
+const governmentResult = document.getElementById("governmentResult");
 
 button.addEventListener("click", async () => {
     try {
@@ -44,4 +46,22 @@ wordsSearchBtn.addEventListener("click", async () => {
             alert("取得に失敗しました");
             console.error(e);
         });
+});
+
+governmentSearchBtn.addEventListener("click", async () => {
+    try {
+        const res = await fetch("https://www.dips.mlit.go.jp/portal/file_download");
+        const gov = await res.json();
+
+        list.innerHTML = ""; // 初期化
+
+        gov.forEach(gov => {
+            const li = document.createElement("li");
+            li.textContent = gov;
+            governmentResult.appendChild(li);
+        });
+    } catch (e) {
+        alert("取得に失敗しました");
+        console.error(e);
+    }
 });
