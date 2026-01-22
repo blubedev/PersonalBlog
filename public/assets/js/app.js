@@ -51,7 +51,7 @@ wordsSearchBtn.addEventListener("click", async () => {
 governmentSearchBtn.addEventListener("click", async () => {
     try {
         const res = await fetch("https://www.dips.mlit.go.jp/portal/file_download");
-        const gov = await res.json();
+        const gov = await res.blob();
 
         list.innerHTML = ""; // 初期化
 
@@ -65,3 +65,19 @@ governmentSearchBtn.addEventListener("click", async () => {
         console.error(e);
     }
 });
+
+const res = await fetch("https://www.dips.mlit.go.jp/portal/file_download");
+const type = res.headers.get("content-type");
+
+if (type.includes("application/json")) {
+  const data = await res.json();
+  console.log("JSON:", data);
+
+} else if (type.includes("text/plain")) {
+  const text = await res.text();
+  console.log("TEXT:", text);
+
+} else {
+  const blob = await res.blob();
+  console.log("FILE:", blob);
+}
