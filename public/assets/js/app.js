@@ -81,3 +81,20 @@ if (type.includes("application/json")) {
   const blob = await res.blob();
   console.log("FILE:", blob);
 }
+
+async () => {
+    const header = new Headers();
+    header.append("Content-Type", "application/json");
+
+    const request = new Request("https://exapmle.org/post",
+        {
+            method: "POST",
+            body: JSON.stringify({ username: "example"}),
+            headers: header
+        }
+    )
+    const response = await fetch(request);
+    const status = await response.json();
+    console.log(status);
+}
+
