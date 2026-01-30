@@ -82,7 +82,7 @@ if (type.includes("application/json")) {
   console.log("FILE:", blob);
 }
 
-async () => {
+async function f() => {
     const header = new Headers();
     header.append("Content-Type", "application/json");
 
@@ -96,5 +96,5 @@ async () => {
     const response = await fetch(request);
     const status = await response.json();
     console.log(status);
-}
+};
 
