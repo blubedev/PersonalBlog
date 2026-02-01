@@ -82,7 +82,7 @@ if (type.includes("application/json")) {
   console.log("FILE:", blob);
 }
 
-async function f() => {
+async () => {
     const header = new Headers();
     header.append("Content-Type", "application/json");
 
