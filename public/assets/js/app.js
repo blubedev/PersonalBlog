@@ -98,3 +98,10 @@ async () => {
     console.log(status);
 };
 
+
+const array = [0, 1, 2, 3]
+
+const convArray = array.map((e) => {
+    console.log(`${e}を変換します`)
+    return e * 10
+})
